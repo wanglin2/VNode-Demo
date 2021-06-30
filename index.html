@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>虚拟dom demo</title>
+  <style>
+    .btn {
+      border: 1px solid #000;
+    }
+
+    .warning {
+      border: 1px solid lightcoral;
+    }
+
+    .bg {
+      background-color: lightgoldenrodyellow;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="app">默认</div>
+
+  <script type="module">
+    import {h, patch} from './vdom.js'
+    let preVNode = patch(document.getElementById('app'), h('div',{
+      class: {
+        btn: true
+      },
+      style: {
+        fontSize: '30px'
+      },
+      attr: {
+        id: 'a'
+      },
+      event: {
+        mouseover: () => {
+          alert('移入我')
+        }
+      }
+    }, '旧'))
+    setTimeout(() => {
+        let newVNode = h('div', {
+          class: {
+            btn: true,
+            warning: false,
+            bg: true
+          },
+          style: {
+            fontWeight: 'bold',
+            fontStyle: 'italic'
+          },
+          event: {
+            click: () => {
+              alert('点了我')
+            }
+          }
+        }, '新')
+        console.log(preVNode, newVNode)
+        patch(preVNode, newVNode)
+    }, 10000);
+</script>
+</body>
+
+</html>
