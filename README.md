@@ -3,7 +3,7 @@
 
 虚拟dom、h函数、patch方法及diff方法的简单实现。
 
-详情请阅读文章：[https://juejin.cn/post/6979507860589772830](https://juejin.cn/post/6979507860589772830)
+详情请阅读文章：[https://juejin.cn/post/6984939221681176607](https://juejin.cn/post/6984939221681176607)
 
 # 启动
 ```bash
